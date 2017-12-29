@@ -16,5 +16,7 @@ module Todo
       'DONE'    => DONE,
       'PENDING' => PENDING
     }.freeze
+
+    scope :status_is, ->(status) { where(status: status) }
   end
 end

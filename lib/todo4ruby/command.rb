@@ -29,5 +29,17 @@ module Todo
 
       task.reload
     end
+
+    def find_tasks(status_name)
+      all_tasks = Task.order('created_at DESC')
+
+      if status_name
+        status = Task::STATUS.fetch(status_name.upcase)
+        all_tasks.status_is(status)
+      else
+        all_tasks
+      end
+
+    end
   end
 end
